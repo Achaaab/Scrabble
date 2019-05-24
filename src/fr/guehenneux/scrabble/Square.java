@@ -5,97 +5,97 @@ package fr.guehenneux.scrabble;
  */
 public class Square {
 
-  private int column;
-  private int row;
-  private Award award;
-  private boolean starting;
-  private Tile tile;
+	private int column;
+	private int row;
+	private Award award;
+	private boolean starting;
+	private Tile tile;
 
 
-  /**
-   * @param column
-   * @param row
-   */
-  public Square(int column, int row) {
+	/**
+	 * @param column
+	 * @param row
+	 */
+	public Square(int column, int row) {
 
-    this.column = column;
-    this.row = row;
+		this.column = column;
+		this.row = row;
 
-    award = Award.NONE;
-    starting = false;
-    tile = null;
-  }
+		award = Award.NONE;
+		starting = false;
+		tile = null;
+	}
 
-  /**
-   * @return
-   */
-  public int getColumn() {
-    return column;
-  }
+	/**
+	 * @return
+	 */
+	public int getColumn() {
+		return column;
+	}
 
-  /**
-   * @return
-   */
-  public int getRow() {
-    return row;
-  }
+	/**
+	 * @return
+	 */
+	public int getRow() {
+		return row;
+	}
 
-  /**
-   * @return whether this square contains a tile
-   */
-  public boolean containsTile() {
-    return tile != null;
-  }
+	/**
+	 * @return whether this square contains a tile
+	 */
+	public boolean containsTile() {
+		return tile != null;
+	}
 
-  /**
-   * @return
-   */
-  public Tile getTile() {
-    return tile;
-  }
+	/**
+	 * @return
+	 */
+	public Tile getTile() {
+		return tile;
+	}
 
-  /**
-   * @param tile
-   */
-  public void setTile(Tile tile) {
-    this.tile = tile;
-  }
+	/**
+	 * @param tile
+	 */
+	public void setTile(Tile tile) {
+		this.tile = tile;
+	}
 
-  /**
-   * @return
-   */
-  public Tile removeTile() {
+	/**
+	 * @return
+	 */
+	public Tile removeTile() {
 
-    Tile removedTile = tile;
-    tile = null;
-    return tile;
-  }
+		Tile removedTile = tile;
+		tile = null;
+		return tile;
+	}
 
-  /**
-   * @return whether this square is a starting square
-   */
-  public boolean isStarting() {
-    return starting;
-  }
+	/**
+	 * @return whether this square is a starting square
+	 */
+	public boolean isStarting() {
+		return starting;
+	}
 
-  /**
-   * @param starting whether this square is a starting square
-   */
-  public void setStarting(boolean starting) {
-    this.starting = starting;
-  }
+	/**
+	 * @param starting whether this square is a starting square
+	 */
+	public void setStarting(boolean starting) {
+		this.starting = starting;
+	}
 
-  /**
-   * @return award
-   */
-  public Award getAward() {
-    return award;
-  }
+	/**
+	 * @return award
+	 */
+	public Award getAward() {
+		return award;
+	}
 
-  /**
-   * @param award
-   */
-  public void setAward(Award award) {
-    this.award = award;
-  }
+	/**
+	 * @param award
+	 */
+	public void setAward(Award award) {
+		this.award = award;
+	}
 }

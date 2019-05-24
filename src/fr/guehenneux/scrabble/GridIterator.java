@@ -7,45 +7,45 @@ import java.util.Iterator;
  */
 public class GridIterator implements Iterator<Square> {
 
-  private Grid grid;
+	private Grid grid;
 
-  private int width;
-  private int height;
-  private int column;
-  private int row;
+	private int width;
+	private int height;
+	private int column;
+	private int row;
 
-  /**
-   * @param grid
-   */
-  public GridIterator(Grid grid) {
+	/**
+	 * @param grid
+	 */
+	public GridIterator(Grid grid) {
 
-    this.grid = grid;
+		this.grid = grid;
 
-    width = grid.getWidth();
-    height = grid.getHeight();
+		width = grid.getWidth();
+		height = grid.getHeight();
 
-    column = 0;
-    row = 0;
-  }
+		column = 0;
+		row = 0;
+	}
 
-  @Override
-  public boolean hasNext() {
-    return row < height;
-  }
+	@Override
+	public boolean hasNext() {
+		return row < height;
+	}
 
-  @Override
-  public Square next() {
+	@Override
+	public Square next() {
 
-    Square next = grid.getSquare(column, row);
+		Square next = grid.getSquare(column, row);
 
-    column++;
+		column++;
 
-    if (column == width) {
+		if (column == width) {
 
-      column = 0;
-      row++;
-    }
+			column = 0;
+			row++;
+		}
 
-    return next;
-  }
+		return next;
+	}
 }

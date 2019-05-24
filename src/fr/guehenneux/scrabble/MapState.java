@@ -10,97 +10,97 @@ import java.util.function.BiConsumer;
  */
 public class MapState implements State {
 
-  private static int nextIdentifier = 0;
+	private static int nextIdentifier = 0;
 
-  private int identifier;
-  private Map<Character, State> successors;
-  private boolean word;
-  private char mostRecentCharacter;
-  private State mostRecentSuccessor;
+	private int identifier;
+	private Map<Character, State> successors;
+	private boolean word;
+	private char mostRecentCharacter;
+	private State mostRecentSuccessor;
 
-  /**
-   *
-   */
-  public MapState() {
+	/**
+	 *
+	 */
+	public MapState() {
 
-    identifier = nextIdentifier++;
-    successors = new LinkedHashMap<>();
-    word = false;
-  }
+		identifier = nextIdentifier++;
+		successors = new LinkedHashMap<>();
+		word = false;
+	}
 
-  @Override
-  public int getIdentifier() {
-    return identifier;
-  }
+	@Override
+	public int getIdentifier() {
+		return identifier;
+	}
 
-  @Override
-  public void forEach(BiConsumer<Character, State> consumer) {
-    successors.forEach(consumer);
-  }
+	@Override
+	public void forEach(BiConsumer<Character, State> consumer) {
+		successors.forEach(consumer);
+	}
 
-  @Override
-  public State getSuccessor(char character) {
-    return successors.get(character);
-  }
+	@Override
+	public State getSuccessor(char character) {
+		return successors.get(character);
+	}
 
-  @Override
-  public boolean hasSuccessors() {
-    return !successors.isEmpty();
-  }
+	@Override
+	public boolean hasSuccessors() {
+		return !successors.isEmpty();
+	}
 
-  @Override
-  public void setSuccessor(char character, State successor) {
+	@Override
+	public void setSuccessor(char character, State successor) {
 
-    successors.put(character, successor);
+		successors.put(character, successor);
 
-    mostRecentCharacter = character;
-    mostRecentSuccessor = successor;
-  }
+		mostRecentCharacter = character;
+		mostRecentSuccessor = successor;
+	}
 
-  @Override
-  public int hashCode() {
-    return identifier;
-  }
+	@Override
+	public int hashCode() {
+		return identifier;
+	}
 
-  @Override
-  public boolean equals(Object object) {
+	@Override
+	public boolean equals(Object object) {
 
-    boolean equals;
+		boolean equals;
 
-    if (this == object) {
+		if (this == object) {
 
-      equals = true;
+			equals = true;
 
-    } else if (object == null || getClass() != object.getClass()) {
+		} else if (object == null || getClass() != object.getClass()) {
 
-      MapState state = (MapState) object;
-      equals = identifier == state.getIdentifier();
+			MapState state = (MapState) object;
+			equals = identifier == state.getIdentifier();
 
-    } else {
+		} else {
 
-      equals = false;
-    }
+			equals = false;
+		}
 
-    return equals;
-  }
+		return equals;
+	}
 
-  @Override
-  public char getMostRecentCharacter() {
-    return mostRecentCharacter;
-  }
+	@Override
+	public char getMostRecentCharacter() {
+		return mostRecentCharacter;
+	}
 
-  @Override
-  public State getMostRecentSuccessor() {
-    return mostRecentSuccessor;
-  }
+	@Override
+	public State getMostRecentSuccessor() {
+		return mostRecentSuccessor;
+	}
 
-  @Override
-  public boolean isWord() {
-    return word;
-  }
+	@Override
+	public boolean isWord() {
+		return word;
+	}
 
-  @Override
-  public void setWord(boolean word) {
-    this.word = word;
-  }
+	@Override
+	public void setWord(boolean word) {
+		this.word = word;
+	}
 }

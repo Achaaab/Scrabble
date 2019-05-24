@@ -13,72 +13,72 @@ import java.util.List;
  */
 public class Scrabble {
 
-  private Grid grid;
-  private Bag bag;
-  private Dictionary dictionary;
-  private List<Player> players;
+	private Grid grid;
+	private Bag bag;
+	private Dictionary dictionary;
+	private List<Player> players;
 
-  /**
-   *
-   */
-  public Scrabble() throws URISyntaxException, IOException {
+	/**
+	 *
+	 */
+	public Scrabble() throws URISyntaxException, IOException {
 
-    grid = new Grid();
-    bag = Bag.createFrenchBag();
-    players = new ArrayList<>();
+		grid = new Grid();
+		bag = Bag.createFrenchBag();
+		players = new ArrayList<>();
 
-    URL dictionaryURL = ClassLoader.getSystemResource("ods6.txt");
-    Path dictionaryPath = Paths.get(dictionaryURL.toURI());
-    dictionary = new Dictionary(dictionaryPath);
-  }
+		URL dictionaryURL = ClassLoader.getSystemResource("ods6.txt");
+		Path dictionaryPath = Paths.get(dictionaryURL.toURI());
+		dictionary = new Dictionary(dictionaryPath);
+	}
 
-  /**
-   * @param player
-   */
-  public void addPlayer(Player player) {
-    players.add(player);
-  }
+	/**
+	 * @param player
+	 */
+	public void addPlayer(Player player) {
+		players.add(player);
+	}
 
-  /**
-   * @param index
-   * @return
-   */
-  public Player getPlayer(int index) {
-    return players.get(index);
-  }
+	/**
+	 * @param index
+	 * @return
+	 */
+	public Player getPlayer(int index) {
+		return players.get(index);
+	}
 
-  /**
-   *
-   */
-  public void reset() {
+	/**
+	 *
+	 */
+	public void reset() {
 
-    grid.empty(bag);
+		grid.empty(bag);
 
-    for (Player player : players) {
-      player.empty(bag);
-    }
+		for (Player player : players) {
+			player.empty(bag);
+		}
 
-    bag.shuffle();
-  }
+		bag.shuffle();
+	}
 
-  /**
-   * @return
-   */
-  public Grid getGrid() {
-    return grid;
-  }
+	/**
+	 * @return
+	 */
+	public Grid getGrid() {
+		return grid;
+	}
 
-  /**
-   * @return
-   */
-  public Bag getBag() {
-    return bag;
-  }
+	/**
+	 * @return
+	 */
+	public Bag getBag() {
+		return bag;
+	}
 
-  /**
-   * @return
-   */
-  public Dictionary getDictionary() {
-    return dictionary;
-  }
+	/**
+	 * @return
+	 */
+	public Dictionary getDictionary() {
+		return dictionary;
+	}
 }

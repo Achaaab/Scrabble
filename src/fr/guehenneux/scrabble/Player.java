@@ -5,58 +5,58 @@ package fr.guehenneux.scrabble;
  */
 public class Player {
 
-  private String name;
-  private Rack rack;
-  private int score;
+	private String name;
+	private Rack rack;
+	private int score;
 
-  /**
-   * @param name
-   */
-  public Player(String name) {
+	/**
+	 * @param name
+	 */
+	public Player(String name) {
 
-    this.name = name;
+		this.name = name;
 
-    rack = new Rack();
-    score = 0;
-  }
+		rack = new Rack();
+		score = 0;
+	}
 
-  /**
-   * @param bag
-   */
-  public void draw(Bag bag) {
+	/**
+	 * @param bag
+	 */
+	public void draw(Bag bag) {
 
-    while (!rack.isFull() && !bag.isEmpty()) {
-      rack.add(bag.pick());
-    }
-  }
+		while (!rack.isFull() && !bag.isEmpty()) {
+			rack.add(bag.pick());
+		}
+	}
 
-  /**
-   * @param bag
-   */
-  public void empty(Bag bag) {
+	/**
+	 * @param bag
+	 */
+	public void empty(Bag bag) {
 
-    bag.addAll(rack);
-    rack.clear();
-  }
+		bag.addAll(rack);
+		rack.clear();
+	}
 
-  /**
-   * @return
-   */
-  public String getName() {
-    return name;
-  }
+	/**
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
 
-  /**
-   * @return
-   */
-  public Rack getRack() {
-    return rack;
-  }
+	/**
+	 * @return
+	 */
+	public Rack getRack() {
+		return rack;
+	}
 
-  /**
-   * @return
-   */
-  public int getScore() {
-    return score;
-  }
+	/**
+	 * @return
+	 */
+	public int getScore() {
+		return score;
+	}
 }
