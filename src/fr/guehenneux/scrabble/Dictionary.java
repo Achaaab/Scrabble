@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  */
 public class Dictionary {
 
-	private AnagramTree tree;
+	private SortedTrie tree;
 
 	/**
 	 * @param path
@@ -21,7 +21,7 @@ public class Dictionary {
 	 */
 	public Dictionary(Path path) throws IOException {
 
-		tree = new AnagramTree(0);
+		tree = new SortedTrie(0);
 
 		try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {
 			lines.forEach(this::addWord);

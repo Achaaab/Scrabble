@@ -9,9 +9,11 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * Directed Acyclic Word Graph
+ *
  * @author Jonathan Guéhenneux
  */
-public class Dawg {
+public class DAWG {
 
 	/**
 	 * @param word0
@@ -42,14 +44,14 @@ public class Dawg {
 		return word0.substring(0, index);
 	}
 
-	private State root;
+	private State initialState;
 
 	/**
 	 * @param words words alphabetically sorted
 	 */
-	public Dawg(List<String> words) {
+	public DAWG(List<String> words) {
 
-		root = new MapState();
+		initialState = new State();
 		insertWords(words);
 	}
 
@@ -59,7 +61,7 @@ public class Dawg {
 	 */
 	private State getState(String string) {
 
-		State state = root;
+		State state = initialState;
 
 		int index = 0;
 		int length = string.length();
@@ -75,7 +77,7 @@ public class Dawg {
 
 	/**
 	 * @param word
-	 * @return
+	 * @return whether this DAWG contains the given word
 	 */
 	public boolean contains(String word) {
 
@@ -85,7 +87,7 @@ public class Dawg {
 
 	/**
 	 * @param prefix
-	 * @return
+	 * @return whether this DAWG contains at least 1 word starting with given prefix
 	 */
 	public boolean prefixExists(String prefix) {
 
@@ -95,7 +97,7 @@ public class Dawg {
 
 	/**
 	 * @param prefix
-	 * @return
+	 * @return the list of words starting with given prefix
 	 */
 	public List<String> prefixSearch(String prefix) {
 
@@ -145,7 +147,7 @@ public class Dawg {
 			previousWord = word;
 		}
 
-		replaceOrRegister(root, register);
+		replaceOrRegister(initialState, register);
 	}
 
 	/**
@@ -179,7 +181,7 @@ public class Dawg {
 
 			char character = suffix.charAt(index);
 
-			State successor = new MapState();
+			State successor = new State();
 			state.setSuccessor(character, successor);
 			state = successor;
 		}
@@ -216,7 +218,7 @@ public class Dawg {
 	public Set<State> getStates() {
 
 		Set<State> states = new HashSet<>();
-		root.collectStates(states);
+		initialState.collectStates(states);
 		return states;
 	}
 }

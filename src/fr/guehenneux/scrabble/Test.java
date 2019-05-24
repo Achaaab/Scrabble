@@ -47,10 +47,10 @@ public class Test {
 		System.out.println("words: " + words.size());
 
 		long beginTime = System.currentTimeMillis();
-		Dawg dawg = new Dawg(words);
+		DAWG dawg = new DAWG(words);
 
 		for (int i = 0; i < 50; i++) {
-			dawg = new Dawg(words);
+			dawg = new DAWG(words);
 		}
 
 		long endTime = System.currentTimeMillis();

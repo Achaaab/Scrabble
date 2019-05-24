@@ -8,16 +8,16 @@ import java.util.Set;
 /**
  * @author Jonathan Guéhenneux
  */
-public class AnagramTree {
+public class SortedTrie {
 
 	private int depth;
 	private Set<String> words;
-	private Map<Character, AnagramTree> children;
+	private Map<Character, SortedTrie> children;
 
 	/**
 	 * @param depth
 	 */
-	public AnagramTree(int depth) {
+	public SortedTrie(int depth) {
 
 		this.depth = depth;
 
@@ -39,11 +39,11 @@ public class AnagramTree {
 
 			char letter = sortedLetters[depth];
 
-			AnagramTree child = children.get(letter);
+			SortedTrie child = children.get(letter);
 
 			if (child == null) {
 
-				child = new AnagramTree(depth + 1);
+				child = new SortedTrie(depth + 1);
 				children.put(letter, child);
 			}
 
@@ -71,7 +71,7 @@ public class AnagramTree {
 
 			if (letter != previousLetter) {
 
-				AnagramTree child = children.get(letter);
+				SortedTrie child = children.get(letter);
 
 				if (child != null) {
 					possibleWords.addAll(child.getPossibleWords(sortedLetters, index + 1, blankCount));
@@ -81,7 +81,7 @@ public class AnagramTree {
 
 		if (blankCount > 0) {
 
-			for (AnagramTree child : children.values()) {
+			for (SortedTrie child : children.values()) {
 				possibleWords.addAll(child.getPossibleWords(sortedLetters, offset, blankCount - 1));
 			}
 		}
