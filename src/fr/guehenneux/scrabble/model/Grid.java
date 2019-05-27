@@ -1,10 +1,9 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.model;
 
-import java.util.HashSet;
+import fr.guehenneux.scrabble.tool.GridIterator;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.IntStream;
 
 /**
  * @author Jonathan Guéhenneux

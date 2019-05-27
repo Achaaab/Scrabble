@@ -1,4 +1,4 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.model;
 
 /**
  * @author Jonathan Guéhenneux

@@ -1,5 +1,17 @@
 package fr.guehenneux.scrabble;
 
+import fr.guehenneux.scrabble.dictionary.Dawg;
+import fr.guehenneux.scrabble.dictionary.Dictionary;
+import fr.guehenneux.scrabble.dictionary.State;
+import fr.guehenneux.scrabble.model.Bag;
+import fr.guehenneux.scrabble.model.Grid;
+import fr.guehenneux.scrabble.model.Orientation;
+import fr.guehenneux.scrabble.model.Player;
+import fr.guehenneux.scrabble.model.Rack;
+import fr.guehenneux.scrabble.model.Scrabble;
+import fr.guehenneux.scrabble.model.Square;
+import fr.guehenneux.scrabble.tool.LengthComparator;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -47,14 +59,14 @@ public class Test {
 		System.out.println("words: " + words.size());
 
 		long beginTime = System.currentTimeMillis();
-		DAWG dawg = new DAWG(words);
+		Dawg dawg = new Dawg(words);
 
 		for (int i = 0; i < 50; i++) {
-			dawg = new DAWG(words);
+			dawg = new Dawg(words);
 		}
 
 		long endTime = System.currentTimeMillis();
-		System.out.println("DAWG construction: " + (endTime - beginTime) + "ms");
+		System.out.println("Dawg construction: " + (endTime - beginTime) + "ms");
 
 		Set<State> states = dawg.getStates();
 		System.out.println("states: " + states.size());

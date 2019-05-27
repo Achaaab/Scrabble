@@ -1,4 +1,4 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.dictionary;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

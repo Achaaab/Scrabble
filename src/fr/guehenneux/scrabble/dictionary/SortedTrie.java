@@ -1,7 +1,9 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.dictionary;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,9 +17,19 @@ public class SortedTrie {
 	private Map<Character, SortedTrie> children;
 
 	/**
+	 * @param words
+	 */
+	public SortedTrie(List<String> words) {
+
+		this(0);
+
+		words.forEach(this::add);
+	}
+
+	/**
 	 * @param depth
 	 */
-	public SortedTrie(int depth) {
+	private SortedTrie(int depth) {
 
 		this.depth = depth;
 
@@ -26,10 +38,21 @@ public class SortedTrie {
 	}
 
 	/**
+	 * @param word
+	 */
+	public void add(String word) {
+
+		char[] letters = word.toCharArray();
+		Arrays.sort(letters);
+
+		add(letters, word);
+	}
+
+	/**
 	 * @param sortedLetters alphabetically sorted letters of the word
 	 * @param word          word to add
 	 */
-	public void addWord(char[] sortedLetters, String word) {
+	private void add(char[] sortedLetters, String word) {
 
 		if (depth == sortedLetters.length) {
 
@@ -47,7 +70,7 @@ public class SortedTrie {
 				children.put(letter, child);
 			}
 
-			child.addWord(sortedLetters, word);
+			child.add(sortedLetters, word);
 		}
 	}
 

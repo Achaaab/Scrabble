@@ -1,4 +1,7 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.tool;
+
+import fr.guehenneux.scrabble.model.Grid;
+import fr.guehenneux.scrabble.model.Square;
 
 import java.util.Iterator;
 

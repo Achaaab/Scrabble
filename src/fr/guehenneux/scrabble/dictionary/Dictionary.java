@@ -1,10 +1,13 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.dictionary;
+
+import fr.guehenneux.scrabble.model.Rack;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -13,7 +16,8 @@ import java.util.stream.Stream;
  */
 public class Dictionary {
 
-	private SortedTrie tree;
+	private SortedTrie sortedTrie;
+	private Dawg dawg;
 
 	/**
 	 * @param path
@@ -21,22 +25,10 @@ public class Dictionary {
 	 */
 	public Dictionary(Path path) throws IOException {
 
-		tree = new SortedTrie(0);
+		List<String> words = Files.readAllLines(path, StandardCharsets.UTF_8);
 
-		try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {
-			lines.forEach(this::addWord);
-		}
-	}
-
-	/**
-	 * @param word
-	 */
-	private void addWord(String word) {
-
-		char[] letters = word.toCharArray();
-		Arrays.sort(letters);
-
-		tree.addWord(letters, word);
+		sortedTrie = new SortedTrie(words);
+		dawg = new Dawg(words);
 	}
 
 	/**
@@ -50,6 +42,6 @@ public class Dictionary {
 
 		int blankCount = rack.getBlankCount();
 
-		return tree.getPossibleWords(letters, 0, blankCount);
+		return sortedTrie.getPossibleWords(letters, 0, blankCount);
 	}
 }

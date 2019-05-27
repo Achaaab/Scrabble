@@ -1,8 +1,7 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 import java.util.stream.Stream;
 
 /**

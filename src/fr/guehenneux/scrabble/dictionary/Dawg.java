@@ -1,4 +1,4 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.dictionary;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Jonathan Guéhenneux
  */
-public class DAWG {
+public class Dawg {
 
 	/**
 	 * @param word0
@@ -49,7 +49,7 @@ public class DAWG {
 	/**
 	 * @param words words alphabetically sorted
 	 */
-	public DAWG(List<String> words) {
+	public Dawg(List<String> words) {
 
 		initialState = new State();
 		insertWords(words);
@@ -77,7 +77,7 @@ public class DAWG {
 
 	/**
 	 * @param word
-	 * @return whether this DAWG contains the given word
+	 * @return whether this Dawg contains the given word
 	 */
 	public boolean contains(String word) {
 
@@ -87,7 +87,7 @@ public class DAWG {
 
 	/**
 	 * @param prefix
-	 * @return whether this DAWG contains at least 1 word starting with given prefix
+	 * @return whether this Dawg contains at least 1 word starting with given prefix
 	 */
 	public boolean prefixExists(String prefix) {
 
@@ -213,7 +213,7 @@ public class DAWG {
 	}
 
 	/**
-	 * @return the set of states in the DAWG
+	 * @return the set of states in the Dawg
 	 */
 	public Set<State> getStates() {
 

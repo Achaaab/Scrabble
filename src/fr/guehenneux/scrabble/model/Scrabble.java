@@ -1,4 +1,6 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.model;
+
+import fr.guehenneux.scrabble.dictionary.Dictionary;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

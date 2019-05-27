@@ -1,4 +1,4 @@
-package fr.guehenneux.scrabble;
+package fr.guehenneux.scrabble.tool;
 
 import java.util.Comparator;
 
